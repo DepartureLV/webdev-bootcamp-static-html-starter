@@ -154,10 +154,16 @@
             />
           </div>
 
-          <a class="text-white absolute top-[45%] left-3 cursor-pointer">
+          <a
+            class="text-white absolute top-[45%] left-3 cursor-pointer"
+            onclick="increaseSlideNumber(-1)"
+          >
             <i class="fa-solid fa-chevron-left fa-2xl"></i>
           </a>
-          <a class="text-white absolute top-[45%] right-3 cursor-pointer">
+          <a
+            class="text-white absolute top-[45%] right-3 cursor-pointer"
+            onclick="increaseSlideNumber(1)"
+          >
             <i class="fa-solid fa-chevron-right fa-2xl"></i>
           </a>
         </div>
@@ -256,12 +262,13 @@
     <script>
       function onSubmit(e) {
         alert(
-          `You ${e.target.email.value} has been subscribed to mailing list`
+          `Your ${e.target.email.value} has been subscribed to mailing list`
         );
       }
 
+      // initail slide
       let slideNumber = 0;
-      showSlide(slideNumber);
+      showSlide(slideNumber); // start by slide 0
       increaseSlideNumber(slideNumber);
 
       function increaseSlideNumber(n) {
