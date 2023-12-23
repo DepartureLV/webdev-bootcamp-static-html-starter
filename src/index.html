@@ -129,6 +129,7 @@
       <section
         class="flex flex-col items-ceter justify-center w-full gap-6 text-white"
       >
+        <!--image carousel-->
         <div class="w-full overflow-hidden relative">
           <div class="w-full h-[400px]">
             <img
@@ -152,7 +153,48 @@
               class="w-full h-full object-cover my-slides"
             />
           </div>
+
+          <a class="text-white absolute top-[45%] left-3 cursor-pointer">
+            <i class="fa-solid fa-chevron-left fa-2xl"></i>
+          </a>
+          <a class="text-white absolute top-[45%] right-3 cursor-pointer">
+            <i class="fa-solid fa-chevron-right fa-2xl"></i>
+          </a>
         </div>
+
+        <!--carousel button-->
+        <div class="flex justify-center items-center w-full gap-3 mt-6">
+          <div
+            class="rounded-full bg-primary h-3 w-3 dot-nav cursor-pointer"
+            onclick="showSlide(0)"
+          ></div>
+          <div
+            class="rounded-full bg-primary h-3 w-3 dot-nav cursor-pointer"
+            onclick="showSlide(1)"
+          ></div>
+          <div
+            class="rounded-full bg-primary h-3 w-3 dot-nav cursor-pointer"
+            onclick="showSlide(2)"
+          ></div>
+          <div
+            class="rounded-full bg-primary h-3 w-3 dot-nav cursor-pointer"
+            onclick="showSlide(3)"
+          ></div>
+        </div>
+
+        <a
+          class="text-white absolute top-[45%] left-3 cursor-pointer"
+          onclick="increaseSlideNumber(-1)"
+        >
+          <i class="fa-solid fa-chevron-left fa-2xl"></i>
+        </a>
+
+        <a
+          class="text-white absolute top-[45%] right-3 cursor-pointer"
+          onclick="increaseSlideNumber(1)"
+        >
+          <i class="fa-solid fa-chevron-right fa-2xl"></i>
+        </a>
       </section>
     </main>
 
@@ -212,17 +254,44 @@
     </footer>
 
     <script>
-      // let alert = document.getElementById('alert');
-      // let mail = document.getElementById('emailName');
-      // alert.onclick = () => {
-      //   let message = mail.value;
-      //   alert(message);
-      // };
-
       function onSubmit(e) {
         alert(
           `You ${e.target.email.value} has been subscribed to mailing list`
         );
+      }
+
+      let slideNumber = 0;
+      showSlide(slideNumber);
+      increaseSlideNumber(slideNumber);
+
+      function increaseSlideNumber(n) {
+        slideNumber += n;
+        showSlide(slideNumber);
+      }
+
+      function showSlide(n) {
+        const imageSlides = document.getElementsByClassName('my-slides');
+        const dotNavs = document.getElementsByClassName('dot-nav');
+
+        if (n >= imageSlides.length) {
+          slideNumber = 0;
+        } else if (n < 0) {
+          slideNumber = imageSlides.length - 1;
+        }
+
+        for (let i = 0; i < imageSlides.length; i++) {
+          imageSlides[i].style.display = 'none';
+
+          dotNavs[i].classList.remove('bg-primary');
+          dotNavs[i].classList.add('border-primary');
+          dotNavs[i].classList.add('border-[1px]');
+        }
+
+        imageSlides[slideNumber].style.display = 'block';
+
+        dotNavs[slideNumber].classList.add('bg-primary');
+        dotNavs[slideNumber].classList.remove('border-primary');
+        dotNavs[slideNumber].classList.remove('border-[1px]');
       }
     </script>
   </body>
