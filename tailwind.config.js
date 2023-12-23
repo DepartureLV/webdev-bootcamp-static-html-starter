@@ -7,6 +7,7 @@ module.exports = {
         primary: '#EE3B51',
         'wd-white': '#FFFFFF',
         'wd-grey': '#999999',
+        'wd-band': '#898989',
         'wd-darkgrey': '#2D2D2D',
         'wd-black': '#373090',
       },
