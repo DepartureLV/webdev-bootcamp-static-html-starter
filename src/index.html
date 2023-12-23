@@ -269,20 +269,19 @@
       // initail slide
       let slideNumber = 0;
       showSlide(slideNumber); // start by slide 0
-      increaseSlideNumber(slideNumber);
 
       function increaseSlideNumber(n) {
         slideNumber += n;
         showSlide(slideNumber);
       }
 
-      function showSlide(n) {
+      function showSlide(slideNumber) {
         const imageSlides = document.getElementsByClassName('my-slides');
         const dotNavs = document.getElementsByClassName('dot-nav');
 
-        if (n >= imageSlides.length) {
+        if (slideNumber >= imageSlides.length) {
           slideNumber = 0;
-        } else if (n < 0) {
+        } else if (slideNumber < 0) {
           slideNumber = imageSlides.length - 1;
         }
 
