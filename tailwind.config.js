@@ -4,11 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#DEF81D',
+        primary: '#EE3B51',
         'wd-white': '#FFFFFF',
         'wd-grey': '#999999',
         'wd-darkgrey': '#2D2D2D',
-        'wd-black': '#080808',
+        'wd-black': '#373090',
       },
       backgroundImage: {
         'hero-pattern':
